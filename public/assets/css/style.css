@@ -1,0 +1,196 @@
+body {
+    background-color: rgb(195, 174, 216);
+
+}
+h1, h2{
+    color: black;
+    text-align: center;
+    height:10vh;
+    padding:10vh;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(195, 174, 216);
+    height: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(92, 100, 209);
+}
+
+#carouselExampleCaptions {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 90px;
+    width: 600px;
+}
+
+.btn-primary {
+    color: rgb(0, 0, 0);
+    background-color:rgb(92, 100, 209);
+    font-weight: bolder;
+    font-style: italic;
+}
+.btn-default {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(0, 0, 0);
+    background-color:rgb(92, 100, 209);
+    font-weight: bolder;
+    font-style: italic; 
+    width:75%;
+    margin-top:10%;
+    /* block-size: 50px; */
+    /* block size est utile pour le remplacer dans le html, à la place des margin et du rétrécissement du bloc */
+}
+
+.picture {
+    margin: auto;
+}
+
+.saga {
+    background-color: rgb(195, 174, 216);
+    color: rgb(0, 0, 0);
+    padding: 30px;
+    height: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    text-align: center;
+    border: solid 1px rgb(0, 0, 0);
+}
+
+.responsive{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top:70px;
+
+}
+
+.logomakino5{
+    height:5%;
+    width:50%;
+}
+.navbar-brand{
+  width:30%;
+}
+.navbar{
+    height:100px;
+}
+.navbar-collapse{
+    position: relative;
+    height:20px;
+    margin:20px;
+    font-weight: 700;
+}
+.neon{
+    height:5%;
+    width:20%;
+    margin-right: 0%;
+}
+.row {
+    justify-content: center;
+
+}
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: rgb(92, 100, 209);
+    color: rgb(0, 0, 0);
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    flex-shrink: 0;
+  }
+.foot{ 
+    margin: 0 auto;
+    color:black;
+    flex: 1 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size:20px;
+    padding:50px 0 10px;
+}
+
+/* FORMULAIRE PAGE CONTACT */
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical 
+  }
+  
+  input[type=submit] {
+    background-color: rgb(92, 100, 209);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: rgb(77, 80, 121);
+  }
+  
+  .container1 {
+    border-radius: 5px;
+    background-color: rgb(195, 174, 216);
+    padding: 200px;
+  }
+/* RESEAUX SOCIAUX */
+/* Lien non visité */
+a:link {color: #000000;}       
+/* Lien visité */      
+a:visited {color:#000000;}  
+ /* Lien survolé*/        
+a:hover {color:#00ccff;}  
+/* Lien sélectionné */          
+a:active {color:#FF0000;} 
+
+.card-body{
+    background-color:rgb(92, 100, 209);
+
+}
+.card-text{
+    color:black;
+    font-weight: bolder;
+    font-style: italic;
+    text-align: center;
+  
+}
+.card{
+    margin: 10%;
+}
+/* CONTACT (code pas bon, problème de responsive)*/
+.mb-3{
+    margin-left:42%;
+}
+/* ACTUS */
+.clignote {
+    color:rgb(45, 8, 255);
+    animation: clignote 2s linear infinite;
+    font-size: 40px;
+    border:solid 1px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    margin-top:70px;
+  }
+  @keyframes clignote {  
+    10% { opacity: 0; }
+  }
+
+.dib{
+    margin: 100px;
+    text-align: center;
+}
