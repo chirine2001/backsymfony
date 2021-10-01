@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(92, 100, 209);" >
+        <a class="navbar-brand" href="{{ path('home') }}"><img src="{{asset('/assets/image/neon.png')}}" class="neon" alt="navbar">
+            <img src="{{asset('/assets/image/logomakino5.jpg')}}" alt="navbar" class="logomakino5"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('home') }}"> Accueil</a>
+        </li>
+            {% if app.user %}
+
+          <li class="nav-item">
+                <a class="nav-link" href="{{ path('user',{'id': app.user.id }) }}">Mon compte</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+            </li>
+          
+
+            {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_home') }}">Administration</a>
+                </li>
+
+            {% endif %}
+
+        {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_register') }}">Creer un compte</a>
+            </li>
+
+        {% endif %}
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('news') }}"> Actus </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des Mangas</a>
+            <div class="dropdown-menu">
+        {% for m in mangaRepository.findAll() %}
+
+              <a class="dropdown-item" href="{{ path('public_manga_detail',{'id': m.id}) }}">{{ m.name }}</a>
+
+          {% endfor %} 
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Scans </a>
+            <div class="dropdown-menu">
+        {% for s in mangaRepository.findAll() %}
+
+              <a class="dropdown-item" href="{{ path('public_scan_detail',{'id': s.id}) }}">{{ s.name }}</a>
+
+          {% endfor %} 
+
+
+             </div>
+        </li>
+                
+           <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
+                <button class="btn btn-dark my-2 my-sm-0" type="submit">Rechercher</button>
+            </form> -->
+        </div>
+    </nav>

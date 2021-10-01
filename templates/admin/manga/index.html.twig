@@ -1,0 +1,33 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Manga index{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 py-5">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1>Liste des mangas</h1>
+                <a href="{{ path('manga_new') }}" class="btn btn-dark">+ Ajouter un manga</a>
+            </div>
+        </div>
+
+        {% for manga in mangas %}
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{{ manga.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <img src="{{ asset(manga.image) }}" class="w-100" style="height:300px; object-fit:cover;"/>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('manga_edit', {'id': manga.id}) }}" class="btn btn-info">modifier</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        
+    </div>
+{% endblock %}

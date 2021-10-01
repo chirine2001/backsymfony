@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Tous les mangas {% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 py-5">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1>{{ manga.name | upper}}</h1>
+            </div>
+        </div>
+
+        {% for episode in manga.episodes %}
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h3 class="ml-2">{{ episode.name | upper }}</h3>
+                    </div>
+            
+                </div>
+                <div class="card-body">
+                    <p>Pour voir le contenu, cliquez ici : <a href="{{ path('public_episode_detail',{'id': episode.id }) }}">voir plus</a></p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        
+    </div>
+{% endblock %}

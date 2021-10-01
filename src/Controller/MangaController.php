@@ -1,82 +1,34 @@
-<?php
+<?php 
 
 namespace App\Controller;
 
-use App\Entity\Manga;
-use App\Form\MangaType;
+
 use App\Repository\MangaRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/manga')]
 class MangaController extends AbstractController
 {
-    #[Route('/', name: 'manga_index', methods: ['GET'])]
+     /**
+     * @Route("/mangas", name="public_manga_liste", methods={"GET"})
+     */
     public function index(MangaRepository $mangaRepository): Response
     {
-        return $this->render('manga/index.html.twig', [
-            'mangas' => $mangaRepository->findAll(),
+        return $this->render('manga_public/liste.html.twig', [
+            'manga' => $mangaRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'manga_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+     /**
+     * @Route("/manga/detail/{id}", name="public_manga_detail", methods={"GET"})
+     */
+    public function detail(int $id,MangaRepository $mangaRepository): Response
     {
-        $manga = new Manga();
-        $form = $this->createForm(MangaType::class, $manga);
-        $form->handleRequest($request);
+        $manga = $mangaRepository->find($id);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($manga);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('manga_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('manga/new.html.twig', [
-            'manga' => $manga,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'manga_show', methods: ['GET'])]
-    public function show(Manga $manga): Response
-    {
-        return $this->render('manga/show.html.twig', [
+        return $this->render('manga_public/detail.html.twig', [
             'manga' => $manga,
         ]);
-    }
-
-    #[Route('/{id}/edit', name: 'manga_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Manga $manga): Response
-    {
-        $form = $this->createForm(MangaType::class, $manga);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('manga_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('manga/edit.html.twig', [
-            'manga' => $manga,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'manga_delete', methods: ['POST'])]
-    public function delete(Request $request, Manga $manga): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$manga->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($manga);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('manga_index', [], Response::HTTP_SEE_OTHER);
     }
 }

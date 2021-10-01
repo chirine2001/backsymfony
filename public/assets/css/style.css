@@ -2,6 +2,9 @@ body {
     background-color: rgb(195, 174, 216);
 
 }
+.divHomeAdmin{
+    background-color: rgb(160, 160, 160);
+}
 h1, h2{
     color: black;
     text-align: center;
@@ -17,21 +20,15 @@ h1, h2{
 ::-webkit-scrollbar-thumb {
     background-color: rgb(92, 100, 209);
 }
-
-#carouselExampleCaptions {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 90px;
-    width: 600px;
+.footer{
+    background-color: rgb(92, 100, 209);
+}
+.admin{
+    text-align: center;
+    font-size: larger;
+    color:#000000;
 }
 
-.btn-primary {
-    color: rgb(0, 0, 0);
-    background-color:rgb(92, 100, 209);
-    font-weight: bolder;
-    font-style: italic;
-}
 .btn-default {
     display: block;
     margin-left: auto;
@@ -93,26 +90,6 @@ h1, h2{
 }
 .row {
     justify-content: center;
-
-}
-footer {
-    text-align: center;
-    padding: 3px;
-    background-color: rgb(92, 100, 209);
-    color: rgb(0, 0, 0);
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    flex-shrink: 0;
-  }
-.foot{ 
-    margin: 0 auto;
-    color:black;
-    flex: 1 0 auto;
-    display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    font-size:20px;
-    padding:50px 0 10px;
 }
 
 /* FORMULAIRE PAGE CONTACT */

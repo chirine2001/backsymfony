@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} MakinoTV {% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 py-5">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1>{{ episode.name | upper}}</h1>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h3 class="ml-2 text-align center">{{ episode.name | upper }}</h3>
+                    </div>
+            
+                </div>
+                <div class="card-body">
+                    <iframe width="560" height="315" src="{{ episode.videoUrl }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Les commentaires</h5>
+            </div>
+            <div class="card-body">
+                {% if episode.commentaires | length > 0 %}
+
+                    {% for commentaire in episode.commentaires %}
+                        <p
+                        {% if app.user is same as commentaire.auteur %}
+                            style=""
+                        {% endif %}
+                        
+                        <p>Date : {{ commentaire.createdAt | date('d-m-Y H:i:s') }}</p>
+                        <p> {{ commentaire.contenu }} </p>
+                        <hr/>
+
+                    {% endfor %}
+
+                {% else %}
+                    <p>Il n y a pas encore de commentaires.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+        <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Ajouter un commentaire</h5>
+            </div>
+            <div class="card-body">
+                {% if app.user %}
+                    
+                    {{ form_start(form) }}
+
+                    {{ form_widget(form) }}
+
+                    <button class="btn btn-light mt-3" type="submit">Enregistrer</button>
+
+                    {{form_end(form)}}
+
+                    {% else %}
+                    <p>Vous devez être connecté pour ajouter un commentaire.</p>
+                    <hr/>
+                    <a class="btn btn-link" href="{{ path('app_login') }}">Se connecter</a>
+                     <hr/>
+                      <a class="btn btn-primary" href="{{ path('app_register') }}">Creer un compte</a>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

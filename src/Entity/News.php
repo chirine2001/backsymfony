@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\NewsRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=NewsRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class News
 {
@@ -27,20 +31,23 @@ class News
      */
     private $content;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $created_at;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
+
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\PrePersist
      */
-    private $user;
+    public function prePersist()
+    {
+        if(empty($this->createdAt))
+        {
+            $this->createdAt = new DateTime();
+        }
+    }
 
     public function getId(): ?int
     {
@@ -71,39 +78,16 @@ class News
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
         return $this;
     }
 
-    public function getUser(): ?string
-    {
-        return $this->user;
-    }
-
-    public function setUser(string $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 }

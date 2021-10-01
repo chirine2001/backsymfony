@@ -1,10 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %} MakinoTV {% endblock %}
+
 
 {% block body %}
+<div class="container">
+        <div class="row">
+       
+    <div class="onepieceban">
+        <img src="{{ asset('assets/image/logo-onepiece.webp')}}" class="responsive" alt="logo one piece">
+    </div>
+    <h1>NOS CONTACTS</h1>
+    <h2>Voici nos réseaux sociaux</h2>
+    <section class="mb-3">
+
+        <a class="btn btn-outline-light btn-floating m-1" href="https://facebook.com" role="button"><i
+                class="fab fa-facebook-f"></i>
+        </a>
+
+        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com" role="button"><i
+                class="fab fa-twitter"></i></a>
+
+        <a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com" role="button"><i
+                class="fab fa-instagram"></i></a>
+
+        <a class="btn btn-outline-light btn-floating m-1" href="https://linkedin.com" role="button"><i
+                class="fab fa-linkedin-in"></i></a>
+
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com" role="button"><i
+                class="fab fa-github"></i></a>
+    </section>
+
 {{ form_start(form) }}
 {{ form_widget(form) }}
 <button type='submit' class="btn btn-dark">Envoyer</button>
 {{ form_end(form) }}
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}

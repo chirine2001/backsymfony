@@ -1,0 +1,32 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %} Admin {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 divHomeAdmin">
+            <h1> Administration </h1>
+            <p class="admin"> Bienvenue sur la page d'accueil d'administration de votre site. Ici, vous pouvez créer, modifier, ajouter, mettre à jour et supprimer du contenu sur le site. Grâce à la barre de navigation ou aux bouttons ci-dessous, des liens vous redirigeront vers la catégorie que vous souhaitez atteindre. </p>
+
+<div class="card">
+  <div class="card-body">
+    <a href="{{ path('home') }}" class="btn btn-light"> Retour à l'accueil </a>
+    <a href="{{ path('episode_index') }}" class="btn btn-light"> Ajouter, modifier ou supprimer un épisode </a>
+    <a href="{{ path('manga_index') }}" class="btn btn-light"> Retour à l'accueil </a>
+    <a href="{{ path('scan_index') }}" class="btn btn-light"> Retour à l'accueil </a>
+    <a href="{{ path('scan_index') }}" class="btn btn-light"> Retour à l'accueil </a>
+  </div>
+</div>
+
+
+
+
+
+ <button type='button' class='btn btn-default btn-lg' href="{{ path('episode_index') }}"> Ajouter, modifier ou supprimer un épisode </button> 
+ <button type='button' class='btn btn-default btn-lg' href="{{ path('manga_index') }}"> Ajouter, modifier ou supprimer un manga </button> 
+ <button type='button' class='btn btn-default btn-lg' href="{{ path('scan_index') }}"> Ajouter, modifier ou supprimer un chapitre </button> 
+ <button type='button' class='btn btn-default btn-lg' href="{{ path('news_index') }}"> Ajouter, modifier ou supprimer une actualité </button> 
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Mon compte {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="onepieceban">
+            <img src="{{ asset('assets/image/logo-onepiece.webp')}}" class="responsive" alt="logo one piece">
+        </div>
+        <div class="row py-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Modifier mon mot de passe</h5>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(formPassword)}}
+
+                        {{ form_widget(formPassword)}}
+
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+
+                        {{ form_end(formPassword) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

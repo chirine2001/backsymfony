@@ -24,6 +24,7 @@ class ContactController extends AbstractController
             $email = $form->get('email')->getData();
             $sujet = $form->get('sujet')->getData();
             $message = $form->get('message')->getData();
+            $pays = $form->get('pays')->getData();
 
             $contactEmail = (new TemplatedEmail())
                 ->from('Contact@monsite.fr')
@@ -33,7 +34,8 @@ class ContactController extends AbstractController
                 ->context([
                     'email_contact' => $email,
                     'sujet' => $sujet,
-                    'message' => $message
+                    'message' => $message,
+                    'pays' => $pays
                 ]);
 
             $mailer ->send($contactEmail);
