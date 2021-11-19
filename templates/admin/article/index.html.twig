@@ -1,36 +1,36 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Mes actualités {% endblock %}
+{% block title %}Mes actus {% endblock %}
 
 {% block body %}
 
     <div class="row">
         <div class="col-12 py-5">
             <div class="d-flex align-items-center justify-content-between">
-                <h1>Liste des actualités</h1>
-                <a href="{{ path('news_new') }}" class="btn btn-dark">+ Ajouter une actu</a>
+                <h1>Liste des actualités </h1>
+                <a href="{{ path('article_new') }}" class="btn btn-dark">+ Ajouter une actu </a>
             </div>
         </div>
 
-        {% for new in news %}
+        {% for article in articles %}
         <div class="col-12 col-md-4">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset(news.image) }}" style="height:50px;object-fit:contain;"/>
-                        <h3 class="ml-2">{{ news.name | upper }}</h3>
+                        <img src="{{ asset(article.manga.image) }}" style="height:50px;object-fit:contain;"/>
+                        <h3 class="ml-2">{{ article.manga.name | upper }} </h3>
                     </div>
                 
                     <hr/>
-                    <h5>{{ news.titre }}</h5>
+                    <h5>{{ article.titre }} </h5>
                 </div>
                 <div class="card-body">
-                    {{ news.contenu | raw }}
+                    {{ article.contenu | raw }}
                 </div>
                 <div class="card-footer">
-                    {{ news.createdAt | date('d-m-Y')}}
+                    {{ article.createdAt | date('d-m-Y')}}
                     <hr/>
-                    <a href="{{ path('news_edit', {'id': news.id}) }}" class="btn btn-info">modifier</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-dark">modifier</a>
                 </div>
             </div>
         </div>

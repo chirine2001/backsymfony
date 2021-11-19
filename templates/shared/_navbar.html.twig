@@ -15,7 +15,7 @@
             {% if app.user %}
 
           <li class="nav-item">
-                <a class="nav-link" href="{{ path('user',{'id': app.user.id }) }}">Mon compte</a>
+                <a class="nav-link" href="{{ path('user_profile',{'id': app.user.id }) }}">Mon compte</a>
             </li>
 
             <li class="nav-item">
@@ -43,10 +43,6 @@
 
         {% endif %}
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path('news') }}"> Actus </a>
-        </li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Liste des Mangas</a>
             <div class="dropdown-menu">
@@ -61,7 +57,7 @@
             <div class="dropdown-menu">
         {% for s in mangaRepository.findAll() %}
 
-              <a class="dropdown-item" href="{{ path('public_scan_detail',{'id': s.id}) }}">{{ s.name }}</a>
+              <a class="dropdown-item" href="{{ path('public_scan_liste',{'id': s.id}) }}">{{ s.name }}</a>
 
           {% endfor %} 
 

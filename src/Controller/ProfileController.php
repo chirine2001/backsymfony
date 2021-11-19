@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("profile/{id}", name="user_profile")
+     * @Route("/profile/{id}", name="user_profile")
      */
     public function profile(int $id,UserRepository $userRepository,Request $request,UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -43,7 +43,7 @@ class ProfileController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render("profile/detail.html.twig",[
+        return $this->render("profile/index.html.twig",[
             'formPassword' =>  $form->createView()
         ]);
     }

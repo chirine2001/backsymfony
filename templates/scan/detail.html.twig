@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Tous les chapitres {% endblock %}
+{% block title %} détail scan {% endblock %}
 
 {% block body %}
+
+
     <div class="row">
         <div class="col-12 py-5">
             <div class="d-flex align-items-center justify-content-between">
@@ -10,22 +12,21 @@
             </div>
         </div>
 
-        {% for scan in scan.image %}
         <div class="col-12 col-md-4">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h3 class="ml-2">{{ scan.title | upper }}</h3>
+                        <h3 class="ml-2 text-align center">{{ scan.title | upper }}</h3>
                     </div>
             
                 </div>
                 <div class="card-body">
-                    <p>Pour voir le contenu, cliquez ici : <a href="{{ path('public_scan_detail',{'id': scan.id }) }}">voir plus</a></p>
+                    <img src="{{ asset(scan.image) }}" class="w-100" style="height:300px; object-fit:cover;"/>
                 </div>
             </div>
         </div>
 
-        {% endfor %}
-        
-    </div>
+
+</div>
+
 {% endblock %}

@@ -31,10 +31,15 @@ class ImageService
 
           $object->setImage('/uploads/' . $uniqFileName);
     }
+    public function editImage($file, object $object, $vintageImage){
+        $this->sauvegarderImage($file, $object);
+        $this->supprimerImage( $vintageImage);
 
-    public function supprimerImage(string $fileName)
+    }
+
+    public function supprimerImage(string $vintageImage)
     {
-        $pathFile = $this->parameterBag->get('app_images_directory') . '/..' . $fileName;
+        $pathFile = $this->parameterBag->get('app_images_directory') . '/..' . $vintageImage;
 
         if(file_exists($pathFile))
         {

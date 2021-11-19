@@ -3,35 +3,31 @@
 {% block title %}Episode index{% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Video_url</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
+        <div class="col-12 py-5">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1>Liste des épisodes</h1>
+                <a href="{{ path('episode_new') }}" class="btn btn-dark">+ Ajouter un épisode</a>
+            </div>
+        </div>
+
         {% for episode in episodes %}
-            <tr>
-                <td>{{ episode.id }}</td>
-                <td>{{ episode.name }}</td>
-                <td>{{ episode.videoUrl }}</td>
-                <td>
-                    <a href="{{ path('episode_show', {'id': episode.id}) }}">show</a>
-                    <a href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{{ episode.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <td>{{ episode.videoUrl }}</td>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('episode_edit', {'id': episode.id}) }}" class="btn btn-dark">modifier</a>
+                </div>
+            </div>
+        </div>
 
-    <a href="{{ path('episode_new') }}">Create new</a>
+        {% endfor %}
+        
+    </div>
 {% endblock %}

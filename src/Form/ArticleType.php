@@ -2,30 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\News;
+use App\Entity\Article;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class NewsType extends AbstractType
+class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content',CKEditor::class)
-            ->add('image_upload',FileType::class,[
-                'mapped' => false,
-                'label' => 'Ajouter une image'
-            ])
+            ->add('titre')
+            ->add('contenu',CKEditorType::class)
+            ->add('manga')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => News::class,
+            'data_class' => Article::class,
         ]);
     }
 }

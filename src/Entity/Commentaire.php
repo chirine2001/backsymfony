@@ -38,14 +38,20 @@ class Commentaire
     private $auteur;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="commentaires")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $article;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Episode::class, inversedBy="commentaires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $episode;
 
     /**
      * @ORM\ManyToOne(targetEntity=Scan::class, inversedBy="commentaires")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $image;
 
@@ -122,6 +128,17 @@ class Commentaire
     public function setImage(?Image $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

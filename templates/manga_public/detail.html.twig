@@ -16,12 +16,36 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
+                        <img src="{{ asset(episode.manga.image) }}" style="height:50px;object-fit:contain;"/>
                         <h3 class="ml-2">{{ episode.name | upper }}</h3>
                     </div>
             
                 </div>
                 <div class="card-body">
                     <p>Pour voir le contenu, cliquez ici : <a href="{{ path('public_episode_detail',{'id': episode.id }) }}">voir plus</a></p>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% for article in manga.articles %}
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ asset(article.manga.image) }}" style="height:50px;object-fit:contain;"/>
+                        <h3 class="ml-2">{{ article.manga.name | upper }} (article) </h3>
+                    </div>
+                
+                    <hr/>
+                    <h5>{{ article.titre }}</h5>
+                </div>
+                <div class="card-body">
+                    <p>Pour voir le contenu, cliquez ici : <a href="{{ path('public_article_show',{'id': article.id }) }}">voir plus</a></p>
+                </div>
+                <div class="card-footer">
+                    {{ article.createdAt | date('d-m-Y')}}
+                    <hr/>
                 </div>
             </div>
         </div>

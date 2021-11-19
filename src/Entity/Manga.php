@@ -36,9 +36,20 @@ class Manga
      */
     private $episodes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="manga")
+     */
+    private $articles;
+
+        /**
+     * @ORM\OneToMany(targetEntity=Scan::class, mappedBy="manga")
+     */
+    private $scans;
+
     public function __construct()
     {
-        $this->episodes = new ArrayCollection();
+        $this->articles = new ArrayCollection();
+        $this->scans = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,6 +110,65 @@ class Manga
 
         return $this;
     }
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setManga($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getManga() === $this) {
+                $article->setManga(null);
+            }
+        }
+        return $this;
+    }
+
+        /**
+     * @return Collection|Scan[]
+     */
+    public function getScans(): Collection
+    {
+        return $this->scans;
+    }
+
+    public function addScan(Scan $scan): self
+    {
+        if (!$this->scans->contains($scan)) {
+            $this->scans[] = $scan;
+            $scan->setManga($this);
+        }
+
+        return $this;
+    }
+
+    public function removeScan(Scan $scan): self
+    {
+        if ($this->scans->removeElement($scan)) {
+            // set the owning side to null (unless already changed)
+            if ($scan->getManga() === $this) {
+                $scan->setManga(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function __toString()
     {
         return $this->name;

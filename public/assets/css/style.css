@@ -3,7 +3,7 @@ body {
 
 }
 .divHomeAdmin{
-    background-color: rgb(160, 160, 160);
+    background-color: rgb(219, 216, 216);
 }
 h1, h2{
     color: black;
@@ -20,8 +20,12 @@ h1, h2{
 ::-webkit-scrollbar-thumb {
     background-color: rgb(92, 100, 209);
 }
+.foot{
+    border-radius: 30% 30%;
+}
 .footer{
     background-color: rgb(92, 100, 209);
+    border-radius: 25% 10%;
 }
 .admin{
     text-align: center;
@@ -170,4 +174,9 @@ a:active {color:#FF0000;}
 .dib{
     margin: 100px;
     text-align: center;
+}
+
+.carousel-item{
+    width:100%;
+    max-height: 200px !important;
 }

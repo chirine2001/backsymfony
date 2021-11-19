@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-12 mt-3">
+        <h1 class="text-center">{{ article.titre | upper}} </h1>
+    </div>
+   
+
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-header" style="background-color: black; color: white;">
+                <p> Publié le : {{ article.createdAt | date('d-m-Y')}}</p>
+            </div>
+            <div class="card-body" style="background-color: white;">
+             {{ article.contenu | raw}}
+            </div>
+           
+         </div>
+    </div>
+
+
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Les commentaires</h5>
+            </div>
+            <div class="card-body">
+                {% if article.commentaires | length > 0 %}
+
+                    {% for commentaire in article.commentaires %}
+                        <p
+                        {% if app.user is same as commentaire.auteur %}
+                            style="font-weight:bold;color:red;"
+                        {% endif %}
+                        
+                        >Auteur : {{ commentaire.auteur.name}}</p>
+                        <p>Date : {{ commentaire.createdAt | date('d-m-Y H:i:s') }}</p>
+                        <p>Contenu : {{ commentaire.contenu }}</p>
+                        <hr/>
+
+                    {% endfor %}
+
+                {% else %}
+                    <p>Il n y a pas encore de commentaires.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 mt-3">
+        <div class="card">
+            <div class="card-header">
+                <h5>Ajouter un commentaire</h5>
+            </div>
+            <div class="card-body">
+                {% if app.user %}
+                    
+                    {{ form_start(form) }}
+
+                    {{ form_widget(form) }}
+
+                    <button class="btn btn-light mt-3" type="submit">Enregistrer</button>
+
+                    {{form_end(form)}}
+
+                    {% else %}
+                    <p>Vous devez être connecté pour ajouter un commentaire.</p>
+                    <hr/>
+                    <a class="btn btn-link" href="{{ path('app_login') }}">Se connecter</a>
+                     <hr/>
+                      <a class="btn btn-light" href="{{ path('app_register') }}">Creer un compte</a>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
